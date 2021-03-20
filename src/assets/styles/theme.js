@@ -4,12 +4,14 @@ const theme = {
     mirage: '#1E213A',
     athensGray: '#E7E7EB',
     santasGray: '#A09FB1',
+    stormGray: '#6E707A',
   },
   fontSize: {
-    xl: '18px',
-    l: '16px',
-    m: '14px',
-    s: '12px',
+    xxl: '120px',
+    xl: '36px',
+    l: '18px',
+    m: '16px',
+    s: '13px',
     xs: '10px',
   },
 };

@@ -19,7 +19,7 @@ body {
 }
 
   a, button {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Raleway', sans-serif;
   }
   ol, ul {
 	list-style: none;
