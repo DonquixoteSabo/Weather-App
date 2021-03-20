@@ -1,10 +1,15 @@
 import * as types from './types';
+import dateFormat from 'dateformat';
+
+//just change celsius to fahrenheit and we will get new value :D;
+const now = new Date();
 
 const initialState = {
+  unit: 'celsius',
   mainWeather: {
     temperature: 15,
     stateName: 'Shower',
-    date: 'Fri, 5 Jun',
+    date: dateFormat(now, 'ddd, mmm dS'),
     location: 'Helsinki',
   },
 };

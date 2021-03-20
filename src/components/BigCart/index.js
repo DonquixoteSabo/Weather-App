@@ -8,8 +8,14 @@ import icon from 'assets/images/Clear.png';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
 import { MainContainer, Wrapper, Content } from './styles';
+import unitChanger from 'helpers/unitChanger';
 
-function BigCart({ weather: { temperature, stateName, date, location } }) {
+function BigCart({
+  unit,
+  weather: { temperature, stateName, date, location },
+}) {
+  const formattedTemperature = unitChanger(unit, temperature);
+
   return (
     <MainContainer>
       <Wrapper>
@@ -21,7 +27,7 @@ function BigCart({ weather: { temperature, stateName, date, location } }) {
           <img src={icon} alt='siema' />
         </div>
         <Content>
-          <p className='temperature'>{temperature}</p>
+          <p className='temperature'>{formattedTemperature}</p>
           <p className='state-name'>{stateName}</p>
           <div>
             <div className='date'>
@@ -42,6 +48,7 @@ function BigCart({ weather: { temperature, stateName, date, location } }) {
 const mapStateToProps = state => {
   return {
     weather: state.mainWeather,
+    unit: state.unit,
   };
 };
 export default connect(mapStateToProps)(BigCart);
