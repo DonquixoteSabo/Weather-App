@@ -1,7 +1,7 @@
+import { useState } from 'react';
+
 import BigCart from 'components/BigCart';
 import Search from 'components/Search';
-import React from 'react';
-import { useState } from 'react';
 
 function MainTemplate() {
   const [isNavActive, setIsNavActive] = useState(true);
