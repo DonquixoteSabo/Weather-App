@@ -1,79 +1,15 @@
 import React from 'react';
-import styled from 'styled-components';
-import LocationOnIcon from '@material-ui/icons/LocationOn';
-import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
-import icon from 'assets/images/Clear.png';
+import { connect } from 'react-redux';
+
 import LocalizationIcon from 'components/atoms/LocalizationIcon';
 import SearchButton from 'components/atoms/SearchButton';
 
-const MainContainer = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  background-color: ${props => props.theme.colors.mirage};
-`;
-const Wrapper = styled.div`
-  width: 375px;
-  height: 810px;
-  display: flex;
-  flex-direction: column;
-  background-color: ${props => props.theme.colors.mirage};
-  color: ${props => props.theme.colors.athensGray};
+import icon from 'assets/images/Clear.png';
+import LocationOnIcon from '@material-ui/icons/LocationOn';
+import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
+import { MainContainer, Wrapper, Content } from './styles';
 
-  div:nth-child(1) {
-    display: flex;
-    justify-content: space-between;
-    padding: 15px;
-  }
-
-  .imgContainer {
-    margin-top: 30px;
-    width: 100%;
-    height: 30%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    img {
-      width: 100%;
-      max-width: 210px;
-    }
-  }
-`;
-
-const Content = styled.div`
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-evenly;
-  font-size: ${props => props.theme.fontSize.m};
-  color: ${props => props.theme.colors.santasGray};
-  .temperature {
-    font-weight: 300;
-    color: ${props => props.theme.colors.athensGray};
-    font-size: ${props => props.theme.fontSize.xxl};
-  }
-  .state-name {
-    font-size: ${props => props.theme.fontSize.xl};
-    font-weight: 600;
-  }
-  .location {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .date {
-    display: flex;
-    align-items: center;
-  }
-  .icon {
-    width: 10px;
-    margin: 0 10px;
-  }
-`;
-
-function BigCart() {
+function BigCart({ weather: { temperature, stateName, date, location } }) {
   return (
     <MainContainer>
       <Wrapper>
@@ -85,17 +21,17 @@ function BigCart() {
           <img src={icon} alt='siema' />
         </div>
         <Content>
-          <p className='temperature'>15</p>
-          <p className='state-name'>Light Cloud</p>
+          <p className='temperature'>{temperature}</p>
+          <p className='state-name'>{stateName}</p>
           <div>
             <div className='date'>
               <p>Today</p>
               <FiberManualRecordIcon className='icon' />
-              <p>Sat, 20 Mar</p>
+              <p>{date}</p>
             </div>
             <div className='location'>
               <LocationOnIcon />
-              <p>helsinki</p>
+              <p>{location}</p>
             </div>
           </div>
         </Content>
@@ -103,5 +39,9 @@ function BigCart() {
     </MainContainer>
   );
 }
-
-export default BigCart;
+const mapStateToProps = state => {
+  return {
+    weather: state.mainWeather,
+  };
+};
+export default connect(mapStateToProps)(BigCart);

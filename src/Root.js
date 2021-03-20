@@ -5,12 +5,16 @@ import { ThemeProvider } from 'styled-components';
 import theme from 'assets/styles/theme';
 import GlobalStyle from 'assets/styles/GlobalStyle';
 
+import WeatherProvider from 'weatherProvider';
+
 function Root() {
   return (
     <>
       <GlobalStyle />
       <ThemeProvider theme={theme}>
-        <MainTemplate />
+        <WeatherProvider>
+          <MainTemplate />
+        </WeatherProvider>
       </ThemeProvider>
     </>
   );
