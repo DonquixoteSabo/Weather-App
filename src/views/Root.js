@@ -1,14 +1,9 @@
 import React from 'react';
 
-const sayHello = a => {
-  console.log(a, 'siema');
-};
-
-sayHello('czesc');
 function Root() {
   return (
     <div>
-      <h1>siemka </h1>
+      <h1>Hello, our journey will begin soon! </h1>
     </div>
   );
 }
