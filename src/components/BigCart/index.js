@@ -1,49 +1,77 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import LocalizationIcon from 'components/atoms/LocalizationIcon';
 import SearchButton from 'components/atoms/SearchButton';
 
-import icon from 'assets/images/Clear.png';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
 import { MainContainer, Wrapper, Content } from './styles';
 import unitChanger from 'helpers/unitChanger';
+import { fetchTodaysWeatherAction } from 'weatherProvider/actions';
+import { useState } from 'react';
 
 function BigCart({
   unit,
-  weather: { temperature, stateName, date, location },
+  weather: { temperature, stateName, date, location, abbr },
+  fetchTodaysWeather,
+  handleActiveChange,
 }) {
   const formattedTemperature = unitChanger(unit, temperature);
-
-  return (
-    <MainContainer>
-      <Wrapper>
-        <div>
-          <SearchButton>Search for places</SearchButton>
-          <LocalizationIcon />
-        </div>
-        <div className='imgContainer'>
-          <img src={icon} alt='siema' />
-        </div>
-        <Content>
-          <p className='temperature'>{formattedTemperature}</p>
-          <p className='state-name'>{stateName}</p>
+  const [loading, setLoading] = useState(true);
+  const [icon, setIcon] = useState('');
+  useEffect(() => {
+    const fetchData = async () => {
+      await fetchTodaysWeather('44418');
+      if (abbr === 'sn') return setIcon('https://i.imgur.com/ynNolNA.png');
+      if (abbr === 'sl') return setIcon('https://i.imgur.com/aGa7q5P.png');
+      if (abbr === 'h') return setIcon('https://i.imgur.com/AdU6T7E.png');
+      if (abbr === 't') return setIcon('https://i.imgur.com/miA4QXM.png');
+      if (abbr === 'hr') return setIcon('https://i.imgur.com/EMIwgdn.png');
+      if (abbr === 'lr') return setIcon('https://i.imgur.com/jvjCECS.png');
+      if (abbr === 's') return setIcon('https://i.imgur.com/3MjYZsu.png');
+      if (abbr === 'lc') return setIcon('https://i.imgur.com/iFIMX0a.png');
+      if (abbr === 'hc') return setIcon('https://i.imgur.com/dkbS6r0.png');
+      if (abbr === 'c') return setIcon('https://i.imgur.com/n6JZJTN.png');
+      return setIcon('https://i.imgur.com/aGa7q5P.png');
+    };
+    fetchData();
+    setLoading(false);
+  }, [fetchTodaysWeather, abbr]);
+  if (loading) {
+    return <div>Loading...</div>;
+  } else {
+    return (
+      <MainContainer>
+        <Wrapper>
           <div>
-            <div className='date'>
-              <p>Today</p>
-              <FiberManualRecordIcon className='icon' />
-              <p>{date}</p>
-            </div>
-            <div className='location'>
-              <LocationOnIcon />
-              <p>{location}</p>
-            </div>
+            <SearchButton onClick={handleActiveChange}>
+              Search for places
+            </SearchButton>
+            <LocalizationIcon />
           </div>
-        </Content>
-      </Wrapper>
-    </MainContainer>
-  );
+          <div className='imgContainer'>
+            <img src={icon} alt='weather icon' />
+          </div>
+          <Content>
+            <p className='temperature'>{formattedTemperature}</p>
+            <p className='state-name'>{stateName}</p>
+            <div>
+              <div className='date'>
+                <p>Today</p>
+                <FiberManualRecordIcon className='icon' />
+                <p>{date}</p>
+              </div>
+              <div className='location'>
+                <LocationOnIcon />
+                <p>{location}</p>
+              </div>
+            </div>
+          </Content>
+        </Wrapper>
+      </MainContainer>
+    );
+  }
 }
 const mapStateToProps = state => {
   return {
@@ -51,4 +79,10 @@ const mapStateToProps = state => {
     unit: state.unit,
   };
 };
-export default connect(mapStateToProps)(BigCart);
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchTodaysWeather: woeid => dispatch(fetchTodaysWeatherAction(woeid)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(BigCart);

@@ -4,13 +4,17 @@ import BigCart from 'components/BigCart';
 import Search from 'components/Search';
 
 function MainTemplate() {
-  const [isNavActive, setIsNavActive] = useState(true);
+  const [isSearchActive, setIsSearchActive] = useState(false);
 
-  const handleActiveChange = () => setIsNavActive(prevState => !prevState);
+  const handleActiveChange = () => setIsSearchActive(prevState => !prevState);
 
   return (
     <div>
-      {isNavActive ? <Search /> : <BigCart />}
+      {isSearchActive ? (
+        <Search />
+      ) : (
+        <BigCart handleActiveChange={handleActiveChange} />
+      )}
       <button onClick={handleActiveChange}>zmien</button>
     </div>
   );
