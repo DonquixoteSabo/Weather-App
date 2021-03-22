@@ -1,1 +1,2 @@
 export const CHECK = 'CHECK';
+export const FETCH_TODAYS_WEATHER = 'FETCH_TODAYS_WEATHER';

@@ -1,25 +1,21 @@
 import * as types from './types';
-import dateFormat from 'dateformat';
 
 //just change celsius to fahrenheit and we will get new value :D;
-const now = new Date();
-
 const initialState = {
   unit: 'celsius',
-  mainWeather: {
-    temperature: 15,
-    stateName: 'Shower',
-    date: dateFormat(now, 'ddd, mmm dS'),
-    location: 'Helsinki',
-  },
+  mainWeather: {},
+  woeidCode: '2487956',
 };
+
+// Search components will only change woeidCode after selecting one of searched value!!!
 
 const weatherReducer = (state = initialState, action) => {
   switch (action.type) {
-    case types.CHECK:
-      console.log('ale ze to dziala to kox');
-      return state;
-
+    case types.FETCH_TODAYS_WEATHER:
+      return {
+        ...state,
+        mainWeather: action.payload,
+      };
     default:
       return state;
   }
