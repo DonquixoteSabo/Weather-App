@@ -1,18 +1,12 @@
 import React, { useState } from 'react';
 import HeaderContainer from 'components/atoms/HeaderContainer';
-import SearchIcon from '@material-ui/icons/Search';
-import {
-  Wrapper,
-  StyledCloseIcon,
-  StyledInput,
-  StyledButton,
-  StyledUl,
-  StyledLi,
-} from './styles';
+
+import { Wrapper, StyledCloseIcon, StyledUl, StyledLi } from './styles';
 import { connect } from 'react-redux';
 import { setWoeidCodeAction } from 'weatherProvider/actions';
 import axios from 'axios';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
+import Form from 'components/atoms/Form';
 function Search({ handleActiveChange: handleCloseMenu, setWoeidCode }) {
   const [inputValue, setInputValue] = useState('');
   const [searchedPlaces, setSearchedPlaces] = useState([]);
@@ -30,27 +24,24 @@ function Search({ handleActiveChange: handleCloseMenu, setWoeidCode }) {
   };
   const handleSubmit = async e => {
     e.preventDefault();
-    searchPlaces();
+    await searchPlaces();
   };
   const handleClick = woeid => {
     setWoeidCode(woeid);
     handleCloseMenu();
   };
+  const handleChange = e => {
+    setInputValue(e.target.value);
+  };
   return (
     <HeaderContainer>
       <Wrapper>
         <StyledCloseIcon onClick={handleCloseMenu} />
-        <form onSubmit={handleSubmit}>
-          <div className='search'>
-            <SearchIcon className='search__icon' />
-            <StyledInput
-              value={inputValue}
-              onChange={e => setInputValue(e.target.value)}
-              placeholder='search location'
-            />
-          </div>
-          <StyledButton type='submit'>Search</StyledButton>
-        </form>
+        <Form
+          handleSubmit={handleSubmit}
+          inputValue={inputValue}
+          handleChange={handleChange}
+        />
         <StyledUl>
           {searchedPlaces.map(city => (
             <StyledLi key={city.woeid} onClick={() => handleClick(city.woeid)}>
@@ -63,6 +54,7 @@ function Search({ handleActiveChange: handleCloseMenu, setWoeidCode }) {
     </HeaderContainer>
   );
 }
+
 const mapDispatchToProps = dispatch => {
   return {
     setWoeidCode: woeid => dispatch(setWoeidCodeAction(woeid)),
