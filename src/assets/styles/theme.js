@@ -5,6 +5,7 @@ const theme = {
     athensGray: '#E7E7EB',
     santasGray: '#A09FB1',
     stormGray: '#6E707A',
+    royalBlue: '#3C47E9',
   },
   fontSize: {
     xxl: '120px',

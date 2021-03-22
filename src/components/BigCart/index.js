@@ -6,10 +6,11 @@ import SearchButton from 'components/atoms/SearchButton';
 
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
-import { MainContainer, Wrapper, Content } from './styles';
+import { Wrapper, Content } from './styles';
 import unitChanger from 'helpers/unitChanger';
 import { fetchTodaysWeatherAction } from 'weatherProvider/actions';
 import { useState } from 'react';
+import HeaderContainer from 'components/atoms/HeaderContainer';
 
 function BigCart({
   unit,
@@ -44,7 +45,7 @@ function BigCart({
     return <div>Loading...</div>;
   } else {
     return (
-      <MainContainer>
+      <HeaderContainer>
         <Wrapper>
           <div>
             <SearchButton onClick={handleActiveChange}>
@@ -71,7 +72,7 @@ function BigCart({
             </div>
           </Content>
         </Wrapper>
-      </MainContainer>
+      </HeaderContainer>
     );
   }
 }
