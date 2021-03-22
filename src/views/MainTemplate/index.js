@@ -11,11 +11,10 @@ function MainTemplate() {
   return (
     <div>
       {isSearchActive ? (
-        <Search />
+        <Search handleActiveChange={handleActiveChange} />
       ) : (
         <BigCart handleActiveChange={handleActiveChange} />
       )}
-      <button onClick={handleActiveChange}>zmien</button>
     </div>
   );
 }

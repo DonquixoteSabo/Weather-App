@@ -11,7 +11,6 @@ export const fetchTodaysWeatherAction = woeid => {
     );
     const data = response.data;
 
-    console.log(data);
     const weather = data.consolidated_weather[0];
 
     dispatch({
@@ -20,10 +19,19 @@ export const fetchTodaysWeatherAction = woeid => {
         temperature: weather.the_temp.toFixed(2),
         stateName: weather.weather_state_name,
         date: dateFormat(now, 'ddd, mmm dS'),
-        location: weather.title,
+        location: data.title,
         abbr: weather.weather_state_abbr,
       },
     });
+  };
+};
+
+export const setWoeidCodeAction = woeid => {
+  return {
+    type: types.SET_WOEID_CODE,
+    payload: {
+      woeid,
+    },
   };
 };
 

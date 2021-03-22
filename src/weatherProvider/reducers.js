@@ -3,7 +3,13 @@ import * as types from './types';
 //just change celsius to fahrenheit and we will get new value :D;
 const initialState = {
   unit: 'celsius',
-  mainWeather: {},
+  mainWeather: {
+    temperature: '',
+    stateName: '',
+    date: '',
+    location: '',
+    abbr: '',
+  },
   woeidCode: '2487956',
 };
 
@@ -15,6 +21,11 @@ const weatherReducer = (state = initialState, action) => {
       return {
         ...state,
         mainWeather: action.payload,
+      };
+    case types.SET_WOEID_CODE:
+      return {
+        ...state,
+        woeidCode: action.payload.woeid,
       };
     default:
       return state;
