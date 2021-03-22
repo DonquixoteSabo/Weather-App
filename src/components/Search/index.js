@@ -4,13 +4,25 @@ import SearchIcon from '@material-ui/icons/Search';
 import { Wrapper, StyledCloseIcon, StyledInput, StyledButton } from './styles';
 import { connect } from 'react-redux';
 import { setWoeidCodeAction } from 'weatherProvider/actions';
+import axios from 'axios';
 
 function Search({ handleActiveChange: handleCloseMenu, setWoeidCode }) {
   const [inputValue, setInputValue] = useState('');
   const [searchedPlaces, setSearchedPlaces] = useState([
-    { name: 'london', woeid: '44418' },
+    { name: '', woeid: '' },
   ]);
-  const searchPlaces = async () => {};
+  const searchPlaces = async () => {
+    const response = await axios.get(
+      `https://api.allorigins.win/raw?url=https://www.metaweather.com/api/location/search/?query=${inputValue}`
+    );
+    const data = response.data;
+    setSearchedPlaces(
+      data.map(city => ({
+        woeid: city.woeid,
+        name: city.title,
+      }))
+    );
+  };
   const handleSubmit = e => {
     e.preventDefault();
     searchPlaces();
