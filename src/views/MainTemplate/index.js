@@ -4,6 +4,7 @@ import BigContainer from 'components/atoms/BigContainer';
 import BigCart from 'components/organism/BigCart';
 import Search from 'components/organism/Search';
 import { Wrapper } from './styles';
+import Carts from 'components/organism/Carts';
 function MainTemplate() {
   const [isSearchActive, setIsSearchActive] = useState(false);
 
@@ -16,7 +17,9 @@ function MainTemplate() {
       ) : (
         <BigCart handleActiveChange={handleActiveChange} />
       )}
-      <BigContainer>siema</BigContainer>
+      <BigContainer>
+        <Carts />
+      </BigContainer>
     </Wrapper>
   );
 }
