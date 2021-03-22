@@ -15,6 +15,11 @@ const theme = {
     s: '13px',
     xs: '10px',
   },
+  breakpoints: {
+    m: '768px',
+    l: '1440px',
+    s: '360px',
+  },
 };
 
 export default theme;
