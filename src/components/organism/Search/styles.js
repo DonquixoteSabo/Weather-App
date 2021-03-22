@@ -1,23 +1,6 @@
-import CloseIcon from '@material-ui/icons/Close';
 import styled from 'styled-components';
-export const StyledInput = styled.input`
-  width: 100%;
-  height: 100%;
-  text-indent: 40px;
-  background-color: transparent;
-  border: 1px solid ${props => props.theme.colors.athensGray};
-  color: inherit;
-  font-size: ${props => props.theme.fontSize.l};
-`;
-export const StyledButton = styled.button`
-  width: 25%;
-  border: none;
-  background-color: ${props => props.theme.colors.royalBlue};
-  padding: 15px 5px;
-  color: inherit;
-  font-weight: 600;
-  font-size: ${props => props.theme.fontSize.l};
-`;
+import CloseIcon from '@material-ui/icons/Close';
+
 export const Wrapper = styled.div`
   width: 375px;
   height: 810px;
@@ -47,4 +30,29 @@ export const StyledCloseIcon = styled(CloseIcon)`
   color: white;
   margin-left: auto;
   margin-top: 10px;
+`;
+
+export const StyledUl = styled.ul`
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+  margin: 30px 0;
+`;
+
+export const StyledLi = styled.li`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 20px 10px;
+  border: 1px solid transparent;
+  &:hover {
+    border: 1px solid #616475;
+    .arrow {
+      display: block;
+    }
+  }
+  .arrow {
+    display: none;
+    font-size: ${props => props.theme.fontSize.m};
+  }
 `;

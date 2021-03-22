@@ -8,7 +8,11 @@ import LocationOnIcon from '@material-ui/icons/LocationOn';
 import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
 import { Wrapper, Content } from './styles';
 import unitChanger from 'helpers/unitChanger';
-import { fetchTodaysWeatherAction } from 'weatherProvider/actions';
+import {
+  fetchTodaysWeatherAction,
+  setLoaded,
+  setLoading,
+} from 'weatherProvider/actions';
 import { useState } from 'react';
 import HeaderContainer from 'components/atoms/HeaderContainer';
 
@@ -18,14 +22,17 @@ function BigCart({
   fetchTodaysWeather,
   handleActiveChange,
   woeidCode,
+  setLoaded,
+  setLoading,
+  loading,
 }) {
   const formattedTemperature = unitChanger(unit, temperature);
-  const [loading, setLoading] = useState(true);
   const [icon, setIcon] = useState('');
   useEffect(() => {
-    setLoading(true);
+    setLoading();
     const fetchData = async () => {
       await fetchTodaysWeather(woeidCode);
+      setLoaded();
       if (abbr === 'sn') return setIcon('https://i.imgur.com/ynNolNA.png');
       if (abbr === 'sl') return setIcon('https://i.imgur.com/aGa7q5P.png');
       if (abbr === 'h') return setIcon('https://i.imgur.com/AdU6T7E.png');
@@ -39,8 +46,7 @@ function BigCart({
       return setIcon('https://i.imgur.com/aGa7q5P.png');
     };
     fetchData();
-    setLoading(false);
-  }, [fetchTodaysWeather, abbr, woeidCode]);
+  }, [fetchTodaysWeather, abbr, woeidCode, setLoaded, setLoading]);
   if (loading) {
     return <div>Loading...</div>;
   } else {
@@ -81,11 +87,14 @@ const mapStateToProps = state => {
     weather: state.mainWeather,
     unit: state.unit,
     woeidCode: state.woeidCode,
+    loading: state.loading,
   };
 };
 const mapDispatchToProps = dispatch => {
   return {
     fetchTodaysWeather: woeid => dispatch(fetchTodaysWeatherAction(woeid)),
+    setLoading: () => dispatch(setLoading()),
+    setLoaded: () => dispatch(setLoaded()),
   };
 };
 

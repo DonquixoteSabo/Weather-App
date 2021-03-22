@@ -34,5 +34,15 @@ export const setWoeidCodeAction = woeid => {
     },
   };
 };
+export const setLoading = () => {
+  return {
+    type: types.SET_LOADING,
+  };
+};
+export const setLoaded = () => {
+  return {
+    type: types.SET_LOADED,
+  };
+};
 
 // `https://api.allorigins.win/raw?url=https://www.metaweather.com/api/location/search/?query=${query}` Using query for search

@@ -11,6 +11,7 @@ const initialState = {
     abbr: '',
   },
   woeidCode: '2487956',
+  loading: true,
 };
 
 // Search components will only change woeidCode after selecting one of searched value!!!
@@ -26,6 +27,16 @@ const weatherReducer = (state = initialState, action) => {
       return {
         ...state,
         woeidCode: action.payload.woeid,
+      };
+    case types.SET_LOADING:
+      return {
+        ...state,
+        loading: true,
+      };
+    case types.SET_LOADED:
+      return {
+        ...state,
+        loading: false,
       };
     default:
       return state;
