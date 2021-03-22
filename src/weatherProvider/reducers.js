@@ -4,7 +4,10 @@ import * as types from './types';
 const initialState = {
   unit: 'celsius',
   mainWeather: {},
+  woeidCode: '2487956',
 };
+
+// Search components will only change woeidCode after selecting one of searched value!!!
 
 const weatherReducer = (state = initialState, action) => {
   switch (action.type) {

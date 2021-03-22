@@ -17,7 +17,7 @@ export const fetchTodaysWeatherAction = woeid => {
     dispatch({
       type: types.FETCH_TODAYS_WEATHER,
       payload: {
-        temperature: weather.the_temp,
+        temperature: weather.the_temp.toFixed(2),
         stateName: weather.weather_state_name,
         date: dateFormat(now, 'ddd, mmm dS'),
         location: weather.title,

@@ -16,13 +16,15 @@ function BigCart({
   weather: { temperature, stateName, date, location, abbr },
   fetchTodaysWeather,
   handleActiveChange,
+  woeidCode,
 }) {
   const formattedTemperature = unitChanger(unit, temperature);
   const [loading, setLoading] = useState(true);
   const [icon, setIcon] = useState('');
   useEffect(() => {
+    setLoading(true);
     const fetchData = async () => {
-      await fetchTodaysWeather('44418');
+      await fetchTodaysWeather(woeidCode);
       if (abbr === 'sn') return setIcon('https://i.imgur.com/ynNolNA.png');
       if (abbr === 'sl') return setIcon('https://i.imgur.com/aGa7q5P.png');
       if (abbr === 'h') return setIcon('https://i.imgur.com/AdU6T7E.png');
@@ -37,7 +39,7 @@ function BigCart({
     };
     fetchData();
     setLoading(false);
-  }, [fetchTodaysWeather, abbr]);
+  }, [fetchTodaysWeather, abbr, woeidCode]);
   if (loading) {
     return <div>Loading...</div>;
   } else {
@@ -77,6 +79,7 @@ const mapStateToProps = state => {
   return {
     weather: state.mainWeather,
     unit: state.unit,
+    woeidCode: state.woeidCode,
   };
 };
 const mapDispatchToProps = dispatch => {
