@@ -1,16 +1,21 @@
 import React, { useState } from 'react';
 import HeaderContainer from 'components/atoms/HeaderContainer';
 import SearchIcon from '@material-ui/icons/Search';
-import { Wrapper, StyledCloseIcon, StyledInput, StyledButton } from './styles';
+import {
+  Wrapper,
+  StyledCloseIcon,
+  StyledInput,
+  StyledButton,
+  StyledUl,
+  StyledLi,
+} from './styles';
 import { connect } from 'react-redux';
 import { setWoeidCodeAction } from 'weatherProvider/actions';
 import axios from 'axios';
-
+import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 function Search({ handleActiveChange: handleCloseMenu, setWoeidCode }) {
   const [inputValue, setInputValue] = useState('');
-  const [searchedPlaces, setSearchedPlaces] = useState([
-    { name: '', woeid: '' },
-  ]);
+  const [searchedPlaces, setSearchedPlaces] = useState([]);
   const searchPlaces = async () => {
     const response = await axios.get(
       `https://api.allorigins.win/raw?url=https://www.metaweather.com/api/location/search/?query=${inputValue}`
@@ -46,13 +51,14 @@ function Search({ handleActiveChange: handleCloseMenu, setWoeidCode }) {
           </div>
           <StyledButton type='submit'>Search</StyledButton>
         </form>
-        <ul>
+        <StyledUl>
           {searchedPlaces.map(city => (
-            <li key={city.woeid} onClick={() => handleClick(city.woeid)}>
+            <StyledLi key={city.woeid} onClick={() => handleClick(city.woeid)}>
               {city.name}
-            </li>
+              <ArrowForwardIosIcon className='arrow' />
+            </StyledLi>
           ))}
-        </ul>
+        </StyledUl>
       </Wrapper>
     </HeaderContainer>
   );
