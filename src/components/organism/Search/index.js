@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { setWoeidCodeAction } from 'weatherProvider/actions';
 import axios from 'axios';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
-import Form from 'components/atoms/Form';
+import Form from 'components/molecules/Form';
 function Search({ handleActiveChange: handleCloseMenu, setWoeidCode }) {
   const [inputValue, setInputValue] = useState('');
   const [searchedPlaces, setSearchedPlaces] = useState([]);
