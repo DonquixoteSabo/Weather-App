@@ -24,7 +24,9 @@ function Search({ handleActiveChange: handleCloseMenu, setWoeidCode }) {
   };
   const handleSubmit = async e => {
     e.preventDefault();
-    await searchPlaces();
+    if (inputValue) {
+      await searchPlaces();
+    }
   };
   const handleClick = woeid => {
     setWoeidCode(woeid);

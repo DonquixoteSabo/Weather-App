@@ -1,8 +1,8 @@
 import * as types from './types';
-import dateFormat from 'dateformat';
+// import dateFormat from 'dateformat';
 import axios from 'axios';
 
-const now = new Date();
+// const now = new Date();
 
 export const fetchTodaysWeatherAction = woeid => {
   return async dispatch => {
@@ -11,17 +11,18 @@ export const fetchTodaysWeatherAction = woeid => {
     );
     const data = response.data;
 
-    const weather = data.consolidated_weather[0];
-
+    const weatherList = data.consolidated_weather.map(weather => ({
+      temperature: weather.the_temp.toFixed(2),
+      minTemp: weather.min_temp.toFixed(2),
+      maxTemp: weather.max_temp.toFixed(2),
+      stateName: weather.weather_state_name,
+      date: weather.applicable_date,
+      location: data.title,
+      abbr: weather.weather_state_abbr,
+    }));
     dispatch({
-      type: types.FETCH_TODAYS_WEATHER,
-      payload: {
-        temperature: weather.the_temp.toFixed(2),
-        stateName: weather.weather_state_name,
-        date: dateFormat(now, 'ddd, mmm dS'),
-        location: data.title,
-        abbr: weather.weather_state_abbr,
-      },
+      type: types.FETCH_WEATHER,
+      payload: weatherList,
     });
   };
 };
@@ -46,3 +47,13 @@ export const setLoaded = () => {
 };
 
 // `https://api.allorigins.win/raw?url=https://www.metaweather.com/api/location/search/?query=${query}` Using query for search
+// dispatch({
+//   type: types.FETCH_WEATHER,
+//   payload: {
+//     temperature: weather.the_temp.toFixed(2),
+//     stateName: weather.weather_state_name,
+//     date: dateFormat(now, 'ddd, mmm dS'),
+//     location: data.title,
+//     abbr: weather.weather_state_abbr,
+//   },
+// });

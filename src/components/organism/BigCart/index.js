@@ -15,10 +15,11 @@ import {
 } from 'weatherProvider/actions';
 import { useState } from 'react';
 import HeaderContainer from 'components/atoms/HeaderContainer';
+import getIcon from 'helpers/getIcon';
 
 function BigCart({
   unit,
-  weather: { temperature, stateName, date, location, abbr },
+  weather,
   fetchTodaysWeather,
   handleActiveChange,
   woeidCode,
@@ -26,6 +27,7 @@ function BigCart({
   setLoading,
   loading,
 }) {
+  const { temperature, stateName, date, location, abbr } = weather[0];
   const formattedTemperature = unitChanger(unit, temperature);
   const [icon, setIcon] = useState('');
   useEffect(() => {
@@ -33,20 +35,12 @@ function BigCart({
     const fetchData = async () => {
       await fetchTodaysWeather(woeidCode);
       setLoaded();
-      if (abbr === 'sn') return setIcon('https://i.imgur.com/ynNolNA.png');
-      if (abbr === 'sl') return setIcon('https://i.imgur.com/aGa7q5P.png');
-      if (abbr === 'h') return setIcon('https://i.imgur.com/AdU6T7E.png');
-      if (abbr === 't') return setIcon('https://i.imgur.com/miA4QXM.png');
-      if (abbr === 'hr') return setIcon('https://i.imgur.com/EMIwgdn.png');
-      if (abbr === 'lr') return setIcon('https://i.imgur.com/jvjCECS.png');
-      if (abbr === 's') return setIcon('https://i.imgur.com/3MjYZsu.png');
-      if (abbr === 'lc') return setIcon('https://i.imgur.com/iFIMX0a.png');
-      if (abbr === 'hc') return setIcon('https://i.imgur.com/dkbS6r0.png');
-      if (abbr === 'c') return setIcon('https://i.imgur.com/n6JZJTN.png');
-      return setIcon('https://i.imgur.com/aGa7q5P.png');
+      const iconLink = getIcon(abbr);
+      setIcon(iconLink);
     };
     fetchData();
-  }, [fetchTodaysWeather, abbr, woeidCode, setLoaded, setLoading]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [woeidCode]);
   if (loading) {
     return <div>Loading...</div>;
   } else {
@@ -84,7 +78,7 @@ function BigCart({
 }
 const mapStateToProps = state => {
   return {
-    weather: state.mainWeather,
+    weather: state.weather,
     unit: state.unit,
     woeidCode: state.woeidCode,
     loading: state.loading,
