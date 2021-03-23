@@ -17,6 +17,7 @@ export const Card = styled.div`
 `;
 export const CardTitle = styled.h2`
   font-size: ${props => props.theme.fontSize.l};
+  font-weight: 500;
 `;
 export const CardImage = styled.img`
   width: 60px;

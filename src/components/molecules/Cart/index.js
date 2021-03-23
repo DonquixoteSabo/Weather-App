@@ -1,14 +1,18 @@
+import dateFormat from 'dateformat';
+import getIcon from 'helpers/getIcon';
 import React from 'react';
 import { Card, CardTitle, CardImage, CardContent } from './styles';
 
-function Cart() {
+function Cart({ stateName, date, abbr, minTemp, maxTemp, isTomorrow = false }) {
+  const formattedDate = dateFormat(date, 'ddd, d mmm');
+  const icon = getIcon(abbr);
   return (
     <Card>
-      <CardTitle>Tomorrow</CardTitle>
-      <CardImage src='https://i.imgur.com/EMIwgdn.png' alt='weather icon' />
+      <CardTitle>{isTomorrow ? 'Tomorrow' : formattedDate}</CardTitle>
+      <CardImage src={icon} alt={stateName} />
       <CardContent>
-        <p>16°C</p>
-        <p>13°C</p>
+        <p>{maxTemp}</p>
+        <p>{minTemp}</p>
       </CardContent>
     </Card>
   );
