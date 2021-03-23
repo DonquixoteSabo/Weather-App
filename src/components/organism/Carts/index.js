@@ -3,7 +3,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Wrapper } from './styles';
 
-function Carts({ weather, woeidCode }) {
+function Carts({ weather }) {
   //Deleting the first element in array
   const weatherList = weather.slice(1);
 
@@ -27,7 +27,6 @@ function Carts({ weather, woeidCode }) {
 const mapStateToProps = state => {
   return {
     weather: state.weather,
-    woeidCode: state.woeidCode,
   };
 };
 export default connect(mapStateToProps)(Carts);

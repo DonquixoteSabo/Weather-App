@@ -35,47 +35,54 @@ function BigCart({
     const fetchData = async () => {
       await fetchTodaysWeather(woeidCode);
       setLoaded();
-      const iconLink = getIcon(abbr);
-      setIcon(iconLink);
     };
     fetchData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [woeidCode]);
-  if (loading) {
-    return <div>Loading...</div>;
-  } else {
-    return (
-      <HeaderContainer>
-        <Wrapper>
-          <div>
-            <SearchButton onClick={handleActiveChange}>
-              Search for places
-            </SearchButton>
-            <LocalizationIcon />
-          </div>
-          <div className='imgContainer'>
-            <img src={icon} alt='weather icon' />
-          </div>
-          <Content>
-            <p className='temperature'>{formattedTemperature}</p>
-            <p className='state-name'>{stateName}</p>
+
+  useEffect(() => {
+    const iconLink = getIcon(abbr);
+    setIcon(iconLink);
+  }, [abbr]);
+
+  return (
+    <HeaderContainer>
+      <Wrapper>
+        {loading ? (
+          <div>Loading...</div>
+        ) : (
+          <>
             <div>
-              <div className='date'>
-                <p>Today</p>
-                <FiberManualRecordIcon className='icon' />
-                <p>{date}</p>
-              </div>
-              <div className='location'>
-                <LocationOnIcon />
-                <p>{location}</p>
-              </div>
+              <SearchButton onClick={handleActiveChange}>
+                Search for places
+              </SearchButton>
+              <LocalizationIcon />
             </div>
-          </Content>
-        </Wrapper>
-      </HeaderContainer>
-    );
-  }
+            <div className='imgContainer'>
+              <img src={icon} alt='weather icon' />
+            </div>
+            <Content>
+              <p className='temperature'>{formattedTemperature}</p>
+              <p className='state-name'>{stateName}</p>
+              <div>
+                <div className='date'>
+                  <p>Today</p>
+                  <FiberManualRecordIcon className='icon' />
+                  <p>{date}</p>
+                </div>
+                <div className='location'>
+                  <LocationOnIcon />
+                  <p>{location}</p>
+                </div>
+              </div>
+            </Content>
+          </>
+        )}
+      </Wrapper>
+    </HeaderContainer>
+  );
 }
+
 const mapStateToProps = state => {
   return {
     weather: state.weather,
