@@ -35,12 +35,17 @@ function BigCart({
     const fetchData = async () => {
       await fetchTodaysWeather(woeidCode);
       setLoaded();
-      const iconLink = getIcon(abbr);
-      setIcon(iconLink);
     };
     fetchData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [woeidCode]);
+
+  useEffect(() => {
+    const iconLink = getIcon(abbr);
+    console.log(iconLink);
+    setIcon(iconLink);
+  }, [abbr]);
+
   if (loading) {
     return <div>Loading...</div>;
   } else {
