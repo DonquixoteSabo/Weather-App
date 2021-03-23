@@ -42,45 +42,47 @@ function BigCart({
 
   useEffect(() => {
     const iconLink = getIcon(abbr);
-    console.log(iconLink);
     setIcon(iconLink);
   }, [abbr]);
 
-  if (loading) {
-    return <div>Loading...</div>;
-  } else {
-    return (
-      <HeaderContainer>
-        <Wrapper>
-          <div>
-            <SearchButton onClick={handleActiveChange}>
-              Search for places
-            </SearchButton>
-            <LocalizationIcon />
-          </div>
-          <div className='imgContainer'>
-            <img src={icon} alt='weather icon' />
-          </div>
-          <Content>
-            <p className='temperature'>{formattedTemperature}</p>
-            <p className='state-name'>{stateName}</p>
+  return (
+    <HeaderContainer>
+      <Wrapper>
+        {loading ? (
+          <div>Loading...</div>
+        ) : (
+          <>
             <div>
-              <div className='date'>
-                <p>Today</p>
-                <FiberManualRecordIcon className='icon' />
-                <p>{date}</p>
-              </div>
-              <div className='location'>
-                <LocationOnIcon />
-                <p>{location}</p>
-              </div>
+              <SearchButton onClick={handleActiveChange}>
+                Search for places
+              </SearchButton>
+              <LocalizationIcon />
             </div>
-          </Content>
-        </Wrapper>
-      </HeaderContainer>
-    );
-  }
+            <div className='imgContainer'>
+              <img src={icon} alt='weather icon' />
+            </div>
+            <Content>
+              <p className='temperature'>{formattedTemperature}</p>
+              <p className='state-name'>{stateName}</p>
+              <div>
+                <div className='date'>
+                  <p>Today</p>
+                  <FiberManualRecordIcon className='icon' />
+                  <p>{date}</p>
+                </div>
+                <div className='location'>
+                  <LocationOnIcon />
+                  <p>{location}</p>
+                </div>
+              </div>
+            </Content>
+          </>
+        )}
+      </Wrapper>
+    </HeaderContainer>
+  );
 }
+
 const mapStateToProps = state => {
   return {
     weather: state.weather,
