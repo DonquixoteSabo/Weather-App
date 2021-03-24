@@ -2,11 +2,10 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import LocalizationIcon from 'components/atoms/LocalizationIcon';
-import SearchButton from 'components/atoms/SearchButton';
 
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
-import { Wrapper, Content } from './styles';
+import { Wrapper, Content, SearchButton } from './styles';
 import unitChanger from 'helpers/unitChanger';
 import {
   fetchTodaysWeatherAction,
