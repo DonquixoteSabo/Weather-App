@@ -6,10 +6,17 @@ const initialState = {
   weather: [
     {
       temperature: '',
+      minTemp: 0,
+      maxTemp: 0,
       stateName: '',
       date: '',
       location: '',
       abbr: '',
+      wind: 0,
+      windDirection: 0,
+      himidity: '0%',
+      visibility: '0',
+      airPressure: 0,
     },
   ],
   woeidCode: '2487956',
