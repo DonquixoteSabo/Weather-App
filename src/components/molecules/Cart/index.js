@@ -1,14 +1,15 @@
+import Title from 'components/atoms/Title';
 import dateFormat from 'dateformat';
 import getIcon from 'helpers/getIcon';
 import React from 'react';
-import { Card, CardTitle, CardImage, CardContent } from './styles';
+import { Card, CardImage, CardContent } from './styles';
 
 function Cart({ stateName, date, abbr, minTemp, maxTemp, isTomorrow = false }) {
   const formattedDate = dateFormat(date, 'ddd, d mmm');
   const icon = getIcon(abbr);
   return (
     <Card>
-      <CardTitle>{isTomorrow ? 'Tomorrow' : formattedDate}</CardTitle>
+      <Title>{isTomorrow ? 'Tomorrow' : formattedDate}</Title>
       <CardImage src={icon} alt={stateName} />
       <CardContent>
         <p>{maxTemp}</p>

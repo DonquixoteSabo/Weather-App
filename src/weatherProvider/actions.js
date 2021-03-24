@@ -19,6 +19,11 @@ export const fetchTodaysWeatherAction = woeid => {
       date: weather.applicable_date,
       location: data.title,
       abbr: weather.weather_state_abbr,
+      wind: weather.wind_speed.toFixed(),
+      windDirection: weather.wind_direction,
+      himidity: weather.humidity,
+      visibility: weather.visibility,
+      airPressure: weather.air_pressure,
     }));
     dispatch({
       type: types.FETCH_WEATHER,
