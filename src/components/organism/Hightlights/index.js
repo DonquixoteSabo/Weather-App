@@ -2,8 +2,10 @@ import React from 'react';
 // import styled from 'styled-components';
 import { connect } from 'react-redux';
 
-import { Wrapper } from './styles';
 import Wind from 'components/molecules/Wind';
+import Humidity from 'components/molecules/Humidity';
+
+import { Wrapper } from './styles';
 
 function Hightlight({ weather }) {
   console.log(weather);
@@ -15,6 +17,7 @@ function Hightlight({ weather }) {
         wind={todaysWeather.wind}
         windDirection={todaysWeather.windDirection}
       />
+      <Humidity percent={todaysWeather.himidity} />
     </Wrapper>
   );
 }
