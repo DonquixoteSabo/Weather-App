@@ -6,6 +6,7 @@ import Wind from 'components/molecules/Wind';
 import Humidity from 'components/molecules/Humidity';
 
 import { Wrapper } from './styles';
+import Visibility from 'components/molecules/Visibility';
 
 function Hightlight({ weather }) {
   console.log(weather);
@@ -18,6 +19,7 @@ function Hightlight({ weather }) {
         windDirection={todaysWeather.windDirection}
       />
       <Humidity percent={todaysWeather.himidity} />
+      <Visibility miles={todaysWeather.visibility} />
     </Wrapper>
   );
 }
