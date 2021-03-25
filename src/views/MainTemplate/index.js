@@ -5,6 +5,7 @@ import Search from 'components/organism/Search';
 import { Wrapper, BigContainer } from './styles';
 import Carts from 'components/organism/Carts';
 import Hightlight from 'components/organism/Hightlights';
+import Footer from 'components/organism/Footer';
 function MainTemplate() {
   const [isSearchActive, setIsSearchActive] = useState(false);
 
@@ -22,6 +23,7 @@ function MainTemplate() {
           <Carts />
           <Hightlight />
         </div>
+        <Footer />
       </BigContainer>
     </Wrapper>
   );
