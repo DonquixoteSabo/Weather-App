@@ -10,10 +10,7 @@ export const Card = styled.div`
   justify-content: space-evenly;
   color: ${props => props.theme.colors.athensGray};
   font-weight: 500;
-  margin: 15px;
-  @media (min-width: ${props => props.theme.breakpoints.m}) {
-    margin: 30px;
-  }
+  margin: 10px;
 `;
 
 export const CardImage = styled.img`

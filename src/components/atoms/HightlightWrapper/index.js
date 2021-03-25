@@ -7,7 +7,7 @@ const HightlightWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 50px;
+  margin: 10px;
   color: ${props => props.theme.colors.athensGray};
 `;
 export default HightlightWrapper;

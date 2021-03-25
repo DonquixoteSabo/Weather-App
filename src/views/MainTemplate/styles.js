@@ -19,4 +19,7 @@ export const BigContainer = styled.div`
   @media (min-width: ${props => props.theme.breakpoints.l}) {
     padding: 100px 80px;
   }
+  div.container {
+    max-width: 800px;
+  }
 `;
