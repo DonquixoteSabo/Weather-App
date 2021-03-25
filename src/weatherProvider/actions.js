@@ -22,8 +22,8 @@ export const fetchTodaysWeatherAction = woeid => {
       wind: weather.wind_speed.toFixed(),
       windDirection: weather.wind_direction,
       himidity: weather.humidity,
-      visibility: weather.visibility,
-      airPressure: weather.air_pressure,
+      visibility: weather.visibility.toFixed(1),
+      airPressure: weather.air_pressure.toFixed(),
     }));
     dispatch({
       type: types.FETCH_WEATHER,

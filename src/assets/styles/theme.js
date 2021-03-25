@@ -6,6 +6,7 @@ const theme = {
     santasGray: '#A09FB1',
     stormGray: '#6E707A',
     royalBlue: '#3C47E9',
+    parisDaisy: '#FFEC65',
   },
   fontSize: {
     xxl: '120px',

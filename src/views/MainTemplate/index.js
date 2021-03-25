@@ -18,8 +18,10 @@ function MainTemplate() {
         <BigCart handleActiveChange={handleActiveChange} />
       )}
       <BigContainer>
-        <Carts />
-        <Hightlight />
+        <div className='container'>
+          <Carts />
+          <Hightlight />
+        </div>
       </BigContainer>
     </Wrapper>
   );
