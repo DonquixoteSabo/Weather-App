@@ -2,9 +2,10 @@ import styled from 'styled-components';
 
 export const Wrapper = styled.div`
   display: flex;
-  width: 100vw;
+  width: 100%;
   min-height: 100vh;
   flex-direction: column;
+  background-color: ${props => props.theme.colors.mirage};
   @media (min-width: ${props => props.theme.breakpoints.m}) {
     flex-direction: row;
   }
