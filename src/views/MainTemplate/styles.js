@@ -16,6 +16,9 @@ export const BigContainer = styled.div`
   background-color: ${props => props.theme.colors.vulcan};
   min-height: 100%;
   padding: 50px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   @media (min-width: ${props => props.theme.breakpoints.l}) {
     padding: 100px 80px;
   }
