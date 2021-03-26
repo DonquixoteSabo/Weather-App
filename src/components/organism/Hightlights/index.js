@@ -1,5 +1,4 @@
 import React from 'react';
-// import styled from 'styled-components';
 import { connect } from 'react-redux';
 
 import Wind from 'components/molecules/Wind';
@@ -10,7 +9,6 @@ import Visibility from 'components/molecules/Visibility';
 import AirPressure from 'components/molecules/AirPressure';
 
 function Hightlight({ weather }) {
-  console.log(weather);
   const todaysWeather = weather[0];
 
   return (
@@ -20,6 +18,7 @@ function Hightlight({ weather }) {
         <Wind
           wind={todaysWeather.wind}
           windDirection={todaysWeather.windDirection}
+          windDirectionCompass={todaysWeather.windDirectionCompass}
         />
         <Humidity percent={todaysWeather.himidity} />
         <Visibility miles={todaysWeather.visibility} />

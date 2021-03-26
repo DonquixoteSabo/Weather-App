@@ -5,7 +5,7 @@ import Title from 'components/atoms/Title';
 import HightlightContent from 'components/atoms/HightlightContent';
 import Compass from 'components/atoms/Compass';
 
-function Wind({ wind, windDirection }) {
+function Wind({ wind, windDirection, windDirectionCompass }) {
   return (
     <HightlightWrapper>
       <Title>Wind status</Title>
@@ -13,7 +13,10 @@ function Wind({ wind, windDirection }) {
         {wind}
         <span>mph</span>
       </HightlightContent>
-      <Compass windDirection={windDirection} />
+      <Compass
+        windDirection={windDirection}
+        windDirectionCompass={windDirectionCompass}
+      />
     </HightlightWrapper>
   );
 }

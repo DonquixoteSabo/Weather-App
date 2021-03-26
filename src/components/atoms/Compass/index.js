@@ -2,13 +2,13 @@ import React from 'react';
 import NearMeIcon from '@material-ui/icons/NearMe';
 import { Wrapper } from './styles';
 
-function Compass({ windDirection }) {
+function Compass({ windDirection, windDirectionCompass }) {
   return (
     <Wrapper degree={windDirection}>
       <div>
         <NearMeIcon className='icon' />
       </div>
-      <span>WSW</span>
+      <span>{windDirectionCompass}</span>
     </Wrapper>
   );
 }
