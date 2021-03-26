@@ -19,6 +19,7 @@ export const BigContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
   @media (min-width: ${props => props.theme.breakpoints.l}) {
     padding: 100px 80px;
   }

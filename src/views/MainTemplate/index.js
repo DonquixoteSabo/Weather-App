@@ -7,6 +7,7 @@ import Hightlight from 'components/organism/Hightlights';
 import Footer from 'components/organism/Footer';
 
 import { Wrapper, BigContainer } from './styles';
+import UnitHandler from 'components/molecules/UnitHandler';
 
 function MainTemplate() {
   const [isSearchActive, setIsSearchActive] = useState(false);
@@ -22,6 +23,7 @@ function MainTemplate() {
       )}
       <BigContainer>
         <div className='container'>
+          <UnitHandler />
           <Carts />
           <Hightlight />
           <Footer />

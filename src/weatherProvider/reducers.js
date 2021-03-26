@@ -45,6 +45,11 @@ const weatherReducer = (state = initialState, action) => {
         ...state,
         loading: false,
       };
+    case types.CHANGE_UNIT:
+      return {
+        ...state,
+        unit: action.payload,
+      };
     default:
       return state;
   }
