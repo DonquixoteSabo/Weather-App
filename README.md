@@ -41,10 +41,8 @@
 
 Introduce your projects by taking a screenshot or a gif. Try to tell visitors a story about your project by answering:
 
-- Where can I see your demo?
-- What was your experience?
-- What have you learned/improved?
-- Your wisdom? :)
+- Making this project was really funny for me. I tried to do this project 2 months ago but it was too difficult for me. After mastered some usefull skills, this challenge was possible for me. I am very proud of this effect.
+- I learnt a lot. I know how to use more advanced styled-components and redux-thunk. Before this project, it was impossible for me to perform asynchronous actions in Redux, but now I know how to do it.. I also learnt a little bit more about atomic design in react applications.
 
 ### Built With
 
