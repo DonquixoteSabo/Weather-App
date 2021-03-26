@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
-import HeaderContainer from 'components/atoms/HeaderContainer';
-
-import { Wrapper, StyledCloseIcon, StyledUl, StyledLi } from './styles';
 import { connect } from 'react-redux';
-import { setWoeidCodeAction } from 'weatherProvider/actions';
 import axios from 'axios';
-import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
+
+import HeaderContainer from 'components/atoms/HeaderContainer';
 import Form from 'components/molecules/Form';
+import { setWoeidCodeAction } from 'weatherProvider/actions';
+
+import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
+import { Wrapper, StyledCloseIcon, StyledUl, StyledLi } from './styles';
+
 function Search({ handleActiveChange: handleCloseMenu, setWoeidCode }) {
   const [inputValue, setInputValue] = useState('');
   const [searchedPlaces, setSearchedPlaces] = useState([]);

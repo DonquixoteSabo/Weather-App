@@ -1,20 +1,19 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-
-import LocalizationIcon from 'components/atoms/LocalizationIcon';
-
-import LocationOnIcon from '@material-ui/icons/LocationOn';
-import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
-import { Wrapper, Content, SearchButton } from './styles';
 import unitChanger from 'helpers/unitChanger';
+import getIcon from 'helpers/getIcon';
+import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
+import LocationOnIcon from '@material-ui/icons/LocationOn';
+
+import HeaderContainer from 'components/atoms/HeaderContainer';
+import LocalizationIcon from 'components/atoms/LocalizationIcon';
+import { Wrapper, Content, SearchButton } from './styles';
+
 import {
   fetchTodaysWeatherAction,
   setLoaded,
   setLoading,
 } from 'weatherProvider/actions';
-import { useState } from 'react';
-import HeaderContainer from 'components/atoms/HeaderContainer';
-import getIcon from 'helpers/getIcon';
 
 function BigCart({
   unit,

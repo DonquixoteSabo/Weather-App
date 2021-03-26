@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import { Wrapper } from './styles';
 
 function Carts({ weather, unit }) {
-  //Deleting the first element in array
   const weatherList = weather.slice(1);
   return (
     <Wrapper>

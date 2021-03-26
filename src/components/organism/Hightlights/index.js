@@ -3,10 +3,9 @@ import { connect } from 'react-redux';
 
 import Wind from 'components/molecules/Wind';
 import Humidity from 'components/molecules/Humidity';
-
-import { Wrapper, Title } from './styles';
 import Visibility from 'components/molecules/Visibility';
 import AirPressure from 'components/molecules/AirPressure';
+import { Wrapper, Title } from './styles';
 
 function Hightlight({ weather }) {
   const todaysWeather = weather[0];
