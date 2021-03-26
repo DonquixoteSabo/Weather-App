@@ -7,7 +7,6 @@ export const Wrapper = styled.div`
   flex-direction: column;
   background-color: ${props => props.theme.colors.mirage};
   color: ${props => props.theme.colors.athensGray};
-
   div:nth-child(1) {
     display: flex;
     justify-content: space-between;
