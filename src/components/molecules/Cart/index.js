@@ -12,8 +12,8 @@ function Cart({ stateName, date, abbr, minTemp, maxTemp, isTomorrow = false }) {
       <Title>{isTomorrow ? 'Tomorrow' : formattedDate}</Title>
       <CardImage src={icon} alt={stateName} />
       <CardContent>
-        <p>{maxTemp}</p>
-        <p>{minTemp}</p>
+        <li>{maxTemp}</li>
+        <li>{minTemp}</li>
       </CardContent>
     </Card>
   );

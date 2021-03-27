@@ -51,7 +51,7 @@ function BigCart({
         ) : (
           <>
             <div>
-              <SearchButton onClick={handleActiveChange}>
+              <SearchButton onClick={handleActiveChange} type='button'>
                 Search for places
               </SearchButton>
               <LocalizationIcon />
@@ -60,19 +60,19 @@ function BigCart({
               <img src={icon} alt='weather icon' />
             </div>
             <Content>
-              <p className='temperature'>{formattedTemperature}</p>
-              <p className='state-name'>{stateName}</p>
-              <div>
+              <li className='temperature'>{formattedTemperature}</li>
+              <li className='state-name'>{stateName}</li>
+              <li>
                 <div className='date'>
                   <p>Today</p>
                   <FiberManualRecordIcon className='icon' />
-                  <p>{date}</p>
+                  <time datetime={date}>{date}</time>
                 </div>
-                <div className='location'>
+                <li className='location'>
                   <LocationOnIcon />
-                  <p>{location}</p>
-                </div>
-              </div>
+                  <address>{location}</address>
+                </li>
+              </li>
             </Content>
           </>
         )}

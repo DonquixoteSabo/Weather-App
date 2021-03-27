@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import CloseIcon from '@material-ui/icons/Close';
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.nav`
   width: 375px;
   height: 810px;
   display: flex;

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.section`
   display: flex;
   width: 100%;
   min-height: 100vh;
@@ -13,7 +13,7 @@ export const Wrapper = styled.div`
   }
 `;
 
-export const BigContainer = styled.div`
+export const BigContainer = styled.main`
   flex-grow: 1;
   width: 100%;
   background-color: ${props => props.theme.colors.vulcan};

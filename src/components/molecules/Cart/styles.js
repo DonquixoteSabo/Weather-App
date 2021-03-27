@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Card = styled.div`
+export const Card = styled.article`
   width: 120px;
   height: 177px;
   background-color: ${props => props.theme.colors.mirage};
@@ -16,12 +16,12 @@ export const Card = styled.div`
 export const CardImage = styled.img`
   width: 60px;
 `;
-export const CardContent = styled.div`
+export const CardContent = styled.ul`
   display: flex;
   width: 100%;
   font-size: ${props => props.theme.fontSize.m};
   justify-content: space-evenly;
-  & p:nth-child(2) {
+  & li:nth-child(2) {
     color: ${props => props.theme.colors.santasGray};
   }
 `;
