@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.aside`
   width: 100px;
   height: 50px;
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 5%;
+  right: 5%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -17,9 +17,9 @@ export const Circle = styled.div`
   justify-content: center;
   align-items: center;
   background-color: ${props =>
-    props.isWhite ? props.theme.colors.athensGray : '#110E3C'};
+    props.isActive ? props.theme.colors.athensGray : '#110E3C'};
   color: ${props =>
-    props.isWhite ? '#110E3C' : props.theme.colors.athensGray};
+    props.isActive ? '#110E3C' : props.theme.colors.athensGray};
   border-radius: 50px;
   font-size: ${props => props.theme.fontSize.m};
   font-weight: bold;

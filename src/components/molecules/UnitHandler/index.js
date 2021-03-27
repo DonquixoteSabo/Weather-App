@@ -1,16 +1,35 @@
 import React from 'react';
+import { useState } from 'react';
 import { connect } from 'react-redux';
 
 import { changeUnit } from 'weatherProvider/actions';
 import { Wrapper, Circle } from './styles';
 
 function UnitHandler({ changeUnit }) {
+  const [active, setActive] = useState('celsius');
+  const handleClick = unit => {
+    changeUnit(unit);
+    if (unit === 'celsius') {
+      setActive('celsius');
+    }
+    if (unit === 'fahrenheit') {
+      setActive('fahrenheit');
+    }
+  };
   return (
     <Wrapper>
-      <Circle isWhite onClick={() => changeUnit('celsius')}>
+      <Circle
+        isActive={active === 'celsius'}
+        onClick={() => handleClick('celsius')}
+      >
         ℃
       </Circle>
-      <Circle onClick={() => changeUnit('fahrenheit')}>℉</Circle>
+      <Circle
+        isActive={active === 'fahrenheit'}
+        onClick={() => handleClick('fahrenheit')}
+      >
+        ℉
+      </Circle>
     </Wrapper>
   );
 }

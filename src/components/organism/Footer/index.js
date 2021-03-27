@@ -6,7 +6,11 @@ function Footer() {
   return (
     <StyledFooter>
       <p>
-        created by <span>Donquixote Sabo</span> - devChallenges.io
+        created by{' '}
+        <a href='https://github.com/DonquixoteSabo' rel='external'>
+          Donquixote Sabo
+        </a>{' '}
+        - devChallenges.io
       </p>
     </StyledFooter>
   );

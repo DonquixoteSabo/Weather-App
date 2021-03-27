@@ -27,7 +27,7 @@ export const Wrapper = styled.div`
   }
 `;
 
-export const Content = styled.div`
+export const Content = styled.ol`
   flex-grow: 1;
   display: flex;
   flex-direction: column;

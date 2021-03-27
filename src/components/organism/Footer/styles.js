@@ -5,7 +5,8 @@ export const StyledFooter = styled.footer`
   font-size: ${props => props.theme.fontSize.s};
   text-align: center;
   color: ${props => props.theme.colors.santasGray};
-  span {
+  a {
     text-decoration: underline;
+    color: inherit;
   }
 `;

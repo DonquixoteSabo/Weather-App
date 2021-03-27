@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const HightlightWrapper = styled.div`
+const HightlightWrapper = styled.section`
   width: 350px;
   background-color: ${props => props.theme.colors.mirage};
   padding: 20px 20px;
