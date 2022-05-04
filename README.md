@@ -8,7 +8,7 @@
 
 <div align="center">
   <h3>
-    <a href="https://donquixotesabo.github.io/Weather-App/">
+    <a href="https://kamil-budzik.github.io/Weather-App/">
       Demo
     </a>
     <span> | </span>
