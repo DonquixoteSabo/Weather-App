@@ -85,4 +85,5 @@ $ npm start
 
 ## Contact
 
-- GitHub [@Donquixote-Sabo](https://github.com/DonquixoteSabo/)
+- GitHub [Kamil Budzik](https://github.com/Kamil-Budzik/)
+- Portfolio [Kamil Budzik](https://kamil-budzik.com/)
